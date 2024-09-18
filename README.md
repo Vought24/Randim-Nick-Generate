@@ -1,4 +1,4 @@
-# Randim-Nick-Generate
+# Random-Nick-Generate
 # Nickname Generator
 
 A simple and fun nickname generator built with Python's Tkinter library. This application generates random nicknames using a predefined list of adjectives and nouns.
@@ -22,5 +22,5 @@ A simple and fun nickname generator built with Python's Tkinter library. This ap
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/nickname-generator.git
+   git clone https://github.com/Vought24/nickname-generator.git
    cd nickname-generator
