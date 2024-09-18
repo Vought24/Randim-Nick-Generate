@@ -24,9 +24,14 @@ second_word = [  "Warrior", "Rebel", "Titan", "Phantom", "Shadow", "Rogue", "Sni
 
 
 
-def gen():
-    nickname = random.choice(first_word) + random.choice(second_word)
-    return nickname
+one_word_choice = 'Simple nickname(one word)'
+two_word_choice = 'Advanced nickname'
+
+default_choice = StringVar(value=two_word_choice)
+
+nickname_simple = random.choice(second_word)
+nickname_advanced = random.choice(first_word) + random.choice(second_word)
+
 
 label_style = ttk.Style()
 label_style.configure("My.TLabel",          # имя стиля
@@ -41,7 +46,27 @@ main_label = ttk.Label(text="Random Nickname Generator",anchor="center", style="
 main_label.place(x=20, y=30, width=660) # приветственная плашка
 
 #   добавить выбор тольео одно слово или два слова для никнейма
-#   добавить вывод результата, кнопку копировать
-#    добавиь кнопку Сгенерировать
+choice_one = ttk.Radiobutton(text=one_word_choice, cursor='hand2', value=one_word_choice, variable=default_choice, )
+choice_one.place(x=50, y=200)
+choice_advanced = ttk.Radiobutton(text=two_word_choice, cursor='hand2', value=two_word_choice, variable=default_choice)
+choice_advanced.place(x=400, y=200)
+
+def gen():
+    if default_choice.get() == one_word_choice:
+        nickname_simple = random.choice(second_word)
+        result_entry.delete(0, END)  
+        result_entry.insert(0, nickname_simple)
+    elif default_choice.get() == two_word_choice:
+        nickname_advanced = random.choice(first_word) + "_" + random.choice(second_word)
+        result_entry.delete(0, END) 
+        result_entry.insert(0, nickname_advanced)
+
+# Generate button
+btn_gen = ttk.Button(text='Generate!', command=gen, cursor='hand2')
+btn_gen.place(x=250, y=250)
+
+# Result display field
+result_entry = ttk.Entry(font=("Helvetica", 14), width=30)
+result_entry.place(x=200, y=300)
 #
 root.mainloop()
